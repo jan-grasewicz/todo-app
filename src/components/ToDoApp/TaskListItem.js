@@ -3,9 +3,10 @@ import './index.css'
 
 class TaskListItem extends Component{
     render(){
+        const{id,name}=this.props.task
         return(
-            <li>
-                <p>Task title</p>
+            <li key={id}>
+                <p>{name}</p>
             </li>
         )
     }

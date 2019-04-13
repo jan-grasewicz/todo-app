@@ -3,14 +3,18 @@ import AddTaskForm from './AddTaskForm'
 import TaskListItem from './TaskListItem'
 
 import './index.css'
+import data from './tasks.json'
 
-class ToDoApp extends Component{
-    render(){
-        return(
+class ToDoApp extends Component {
+    render() {
+        return (
             <div>
                 <AddTaskForm />
                 <ul>
-                    <TaskListItem />
+                    {data.tasks.map(task =>
+                        <TaskListItem task={task} />
+                    )
+                    }
                 </ul>
             </div>
         )
