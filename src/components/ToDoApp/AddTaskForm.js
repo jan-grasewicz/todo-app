@@ -1,14 +1,36 @@
-import React, { Component } from 'react'
-import './index.css'
+import React, { Component } from "react";
+import "./index.css";
 
 class AddTaskForm extends Component {
-    render() {
-        return (
-            <div>
-                <input placeholder="Enter new task"></input>
-            </div>
+  state = {
+    taskName: ""
+  };
 
-        )
+  handleChange = event => {
+    this.setState({
+      taskName: event.target.value
+    });
+  };
+  handleKeyUp = event => {
+    if (event.key === "Enter") {
+      console.log(this.state.taskName);
+      this.setState({ taskName: "" });
     }
+  };
+
+  render() {
+    return (
+      <>
+        <input
+          value={this.state.taskName}
+          onChange={this.handleChange}
+          onKeyUp={this.handleKeyUp}
+          className="addTaskForm__input"
+          placeholder="Enter new task"
+          autoFocus
+        />
+      </>
+    );
+  }
 }
-export default AddTaskForm
+export default AddTaskForm;
