@@ -7,6 +7,8 @@ const { Provider, Consumer } = TasksContext;
 export default class TasksContextProvider extends Component {
   state = {
     tasks: null,
+    getTasksFromNewest: () =>
+      this.state.tasks ? this.state.tasks.slice().reverse() : [],
     addTask: taskName =>
       this.setState({
         tasks: this.state.tasks.concat({

@@ -8,13 +8,14 @@ import { withTasks } from "../../contexts/TasksContext";
 
 class ToDoApp extends Component {
   render() {
-    const { addTask, tasks } = this.props.tasksContext;
+    const { addTask, getTasksFromNewest } = this.props.tasksContext;
     return (
       <div>
         <AddTaskForm handleInput={addTask} />
         <ul>
-          {tasks &&
-            tasks.map(task => <TaskListItem task={task} key={task.id} />)}
+          {getTasksFromNewest().map(task => (
+            <TaskListItem task={task} key={task.id} />
+          ))}
         </ul>
       </div>
     );
