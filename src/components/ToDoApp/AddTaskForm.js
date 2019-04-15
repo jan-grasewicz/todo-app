@@ -13,7 +13,7 @@ class AddTaskForm extends Component {
   };
 
   handleKeyUp = event => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter"&&this.state.taskName.length) {
       this.props.handleInput(this.state.taskName);
       this.setState({ taskName: "" });
     }
