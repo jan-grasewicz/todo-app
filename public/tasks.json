@@ -1,0 +1,22 @@
+{
+    "tasks":[
+        {
+            "id":1,
+            "name":"task name1",
+            "status":"todo",
+            "parent":"tasks"
+        },
+        {
+            "id":2,
+            "name":"task name2",
+            "status":"inprogress",
+            "parent":"tasks"
+        },
+        {
+            "id":3,
+            "name":"task name3",
+            "status":"done",
+            "parent":"tasks"
+        }
+    ]
+}
