@@ -8,6 +8,14 @@ export default class TasksContextProvider extends Component {
     tasks: null,
     getTasksFromNewest: () =>
       this.state.tasks ? this.state.tasks.slice().reverse() : [],
+    getTasksToDo: () =>
+      this.state.getTasksFromNewest().filter(task => task.status === "todo"),
+    getTasksInProgress: () =>
+      this.state
+        .getTasksFromNewest()
+        .filter(task => task.status === "inprogress"),
+    getTasksDone: () =>
+      this.state.getTasksFromNewest().filter(task => task.status === "done"),
     addTask: taskName =>
       this.setState({
         tasks: this.state.tasks.concat({

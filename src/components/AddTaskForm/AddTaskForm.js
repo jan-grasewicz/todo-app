@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withTasks } from "../../contexts/TasksContext";
 
 class AddTaskForm extends Component {
   state = {
@@ -13,7 +14,7 @@ class AddTaskForm extends Component {
 
   handleKeyUp = event => {
     if (event.key === "Enter" && this.state.taskName.length) {
-      this.props.handleInput(this.state.taskName);
+      this.props.tasksContext.addTask(this.state.taskName);
       this.setState({ taskName: "" });
     }
   };
@@ -33,4 +34,4 @@ class AddTaskForm extends Component {
     );
   }
 }
-export default AddTaskForm;
+export default withTasks(AddTaskForm);
