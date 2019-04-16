@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import AddTaskForm from "./AddTaskForm";
-import TaskListItem from "./TaskListItem";
+import AddTaskForm from "./components/AddTaskForm";
+import TaskListItem from "./components/TaskListItem";
 
-import "./index.css";
+import "./ToDoApp.css";
 
-import { withTasks } from "../../contexts/TasksContext";
+import { withTasks } from "./contexts/TasksContext";
 
 class ToDoApp extends Component {
   render() {

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import data from "../components/ToDoApp/tasks.json";
 
 export const TasksContext = React.createContext();
 const { Provider, Consumer } = TasksContext;
@@ -21,7 +20,9 @@ export default class TasksContextProvider extends Component {
   };
 
   componentDidMount() {
-    this.setState({ tasks: data.tasks });
+    fetch(process.env.PUBLIC_URL + "/tasks.json")
+      .then(response => response.json())
+      .then(data => this.setState({ tasks: data.tasks }));
   }
 
   componentWillUnmount() {}
