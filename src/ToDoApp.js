@@ -4,12 +4,16 @@ import TasksToDo from "./components/TasksToDo";
 import TasksInProgress from "./components/TasksInProgess";
 import TasksDone from "./components/TasksDone";
 
+import { withTasks } from "./contexts/TasksContext";
+
+
 import "./ToDoApp.css";
 
 class ToDoApp extends Component {
   render() {
     return (
       <div>
+        {/* {console.log(this.props.tasksContext)} */}
         <AddTaskForm />
         <TasksToDo />
         <TasksInProgress />
@@ -18,4 +22,4 @@ class ToDoApp extends Component {
     );
   }
 }
-export default ToDoApp;
+export default withTasks(ToDoApp);

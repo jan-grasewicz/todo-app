@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+import {getTasksPromise} from '../services/index.js'
+
 export const TasksContext = React.createContext();
 const { Provider, Consumer } = TasksContext;
 
@@ -28,9 +30,13 @@ export default class TasksContextProvider extends Component {
   };
 
   componentDidMount() {
-    fetch(process.env.PUBLIC_URL + "/tasks.json")
-      .then(response => response.json())
-      .then(data => this.setState({ tasks: data.tasks }));
+   getTasksPromise().then(data => 
+    console.log(data)
+    // this.setState({ tasks: data })
+    )
+    // fetch(process.env.PUBLIC_URL + "/tasks.json")
+    //   .then(response => response.json())
+    //   .then(data => this.setState({ tasks: data.tasks }));
   }
 
   componentWillUnmount() {}

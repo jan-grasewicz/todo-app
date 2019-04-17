@@ -5,6 +5,8 @@ import ToDoApp from "./ToDoApp";
 import * as serviceWorker from "./serviceWorker";
 import TasksContextProvider from "./contexts/TasksContext";
 
+// import "./firebaseSetup";
+
 ReactDOM.render(
   <TasksContextProvider>
     <ToDoApp />
