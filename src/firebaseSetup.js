@@ -1,4 +1,5 @@
 import firebase from "firebase";
+import "firebase/firestore"
 
 const config = {
   apiKey: "AIzaSyAiK_YVhYGcs3eLb9ruwkkwcE6a4tAJoMw",
@@ -8,4 +9,6 @@ const config = {
   storageBucket: "nested-todos-app.appspot.com",
   messagingSenderId: "806198109527"
 };
-firebase.initializeApp(config);
+const firebaseApp=firebase.initializeApp(config);
+const firestore = firebaseApp.firestore()
+export default firestore

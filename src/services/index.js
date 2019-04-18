@@ -1,19 +1,15 @@
-import firebase from 'firebase';
-// import "./firebaseSetup";
-
-const config = {
-    apiKey: "AIzaSyAiK_YVhYGcs3eLb9ruwkkwcE6a4tAJoMw",
-    authDomain: "nested-todos-app.firebaseapp.com",
-    databaseURL: "https://nested-todos-app.firebaseio.com",
-    projectId: "nested-todos-app",
-    storageBucket: "nested-todos-app.appspot.com",
-    messagingSenderId: "806198109527"
-  };
-  firebase.initializeApp(config);
-
-const docRef =firebase.firestore().collection('tasks')
+import db from "../firebaseSetup";
 
 export const getTasksPromise = () =>
-docRef.get().then(doc=>console.log(doc))
+db.collection("tasks").get().then(querySnapshots=>{querySnapshots.forEach(
+doc=>{const task={
+  id: doc.id,
+  title: doc.data().title,
+  status: doc.data().status,
+  timestamp: doc.data().timestamp.seconds
+}
+console.log(task)}
+)})
+
 
 // {if(doc&&doc.exist){return doc.data()}}

@@ -30,10 +30,11 @@ export default class TasksContextProvider extends Component {
   };
 
   componentDidMount() {
-   getTasksPromise().then(data => 
-    console.log(data)
+   getTasksPromise()
+  // .then(data => 
+  //   console.log(data)
     // this.setState({ tasks: data })
-    )
+    // )
     // fetch(process.env.PUBLIC_URL + "/tasks.json")
     //   .then(response => response.json())
     //   .then(data => this.setState({ tasks: data.tasks }));
