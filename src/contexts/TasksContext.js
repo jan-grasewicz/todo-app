@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import db, { forServerTimestamp } from "../firebaseSetup";
+import { forServerTimestamp, tasksCollection } from "../firebaseSetup";
 
 export const TasksContext = React.createContext();
 const { Provider, Consumer } = TasksContext;
@@ -8,33 +8,55 @@ export default class TasksContextProvider extends Component {
   state = {
     tasks: [],
     getTasksRealtime: () =>
-      db
-        .collection("tasks")
-        .orderBy("timestamp.user", "desc")
-        .onSnapshot(
-          querySnapshot => {
-            let tasks = [];
-            querySnapshot.forEach(doc =>
-              tasks.push({ id: doc.id, ...doc.data() })
-            );
-            this.setState({ tasks });
-          },
-          error => console.log("error:", error)
-        ),
+      tasksCollection.orderBy("timestamp.statusChange", "desc").onSnapshot(
+        querySnapshot => {
+          let tasks = [];
+          querySnapshot.forEach(doc =>
+            tasks.push({ id: doc.id, ...doc.data() })
+          );
+          this.setState({ tasks });
+        },
+        error => console.error("Fetch tasks error:", error)
+      ),
     getTasksToDo: () => this.state.tasks.filter(task => task.status === "todo"),
     getTasksInProgress: () =>
       this.state.tasks.filter(task => task.status === "inprogress"),
     getTasksDone: () => this.state.tasks.filter(task => task.status === "done"),
 
     addTask: taskTitle =>
-      db.collection("tasks").add({
+      tasksCollection.add({
         title: taskTitle,
         status: "todo",
         timestamp: {
-          user: new Date(),
+          created: new Date(),
+          statusChange: new Date(),
           server: forServerTimestamp.FieldValue.serverTimestamp()
         }
-      })
+      }),
+    changeTaskStatus: (id, status) => {
+      switch (status) {
+        case "todo":
+          return tasksCollection
+            .doc(id)
+            .update({
+              status: "inprogress",
+              "timestamp.statusChange": new Date()
+            })
+            .catch(error => console.error("Status change error: ", error));
+        case "inprogress":
+          return tasksCollection
+            .doc(id)
+            .update({ status: "done", "timestamp.statusChange": new Date() })
+            .catch(error => console.error("Status change error: ", error));
+        case "done":
+          return tasksCollection
+            .doc(id)
+            .delete()
+            .catch(error => console.error("Delete task error: ", error));
+        default:
+          return console.error("unexpected status");
+      }
+    }
   };
 
   componentDidMount() {
