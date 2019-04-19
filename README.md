@@ -1,2 +1,6 @@
-# todo-app
-make my own todo app for practice
+# Todo-App
+..*React (CRA)
+..*Context
+..*Cloud Firestore (websocket)
+
+
