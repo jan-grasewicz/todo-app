@@ -8,13 +8,16 @@ class TaskListItem extends Component {
 
   render() {
     const { title, id, status } = this.props.task;
-    const statusBtnMsgArr= ['todo','inprogress','done','delete']
+    const statusBtnMsg = {
+      todo: "Start Task",
+      inprogress: "End Task",
+      done: "Delete Task"
+    };
     return (
       <li>
         <p>{title}</p>
         <button onClick={() => this.handleStatusChange(id, status)}>
-        
-          {statusBtnMsgArr[statusBtnMsgArr.indexOf(status)+1]}
+          {statusBtnMsg[status]}
         </button>
       </li>
     );
