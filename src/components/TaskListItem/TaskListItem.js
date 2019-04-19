@@ -2,10 +2,10 @@ import React, { Component } from "react";
 
 class TaskListItem extends Component {
   render() {
-    const { name } = this.props.task;
+    const { title } = this.props.task;
     return (
       <li>
-        <p>{name}</p>
+        <p>{title}</p>
       </li>
     );
   }

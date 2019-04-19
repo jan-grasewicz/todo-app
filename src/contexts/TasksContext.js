@@ -1,73 +1,37 @@
 import React, { Component } from "react";
 import db from "../firebaseSetup";
-// import { getTasksPromiseByStatus} from '../services/index.js'
 
 export const TasksContext = React.createContext();
 const { Provider, Consumer } = TasksContext;
 
 export default class TasksContextProvider extends Component {
   state = {
-    tasks: null,
-    getTasksPromise : () =>
-    db
-      .collection("tasks")
-      .get()
-      .then(querySnapshot => {
+    tasks: [],
+    getTasksRealtime: () =>
+      db.collection("tasks").onSnapshot(querySnapshot => {
         let tasks = [];
-        querySnapshot.forEach(
-          doc => doc.exists && tasks.push({ id: doc.id, ...doc.data() })
-        );
-        return tasks;
-      })
-      .catch(error => console.log("Error getting document:", error)),
+        querySnapshot.forEach(doc => tasks.push({ id: doc.id, ...doc.data() }));
+        this.setState({ tasks });
+      }),
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    getTasksFromNewest: () =>
-      this.state.tasks ? this.state.tasks.slice().reverse() : [],
-
-    getTasksToDo: () =>
-    this.state.getTasksFromNewest().filter(task => task.status === "todo"),
-    // getTasksPromiseByStatus('todo'),
-    // {
-      // console.log('fuckyou')
-      // console.log(Array.isArray(getTasksRealtimeByStatus('todo')))
-      // console.log(getTasksRealtimeByStatus('todo'))
-      // },
-    // .map(data=>console.log(data)),
+    getTasksToDo: () => this.state.tasks.filter(task => task.status === "todo"),
     getTasksInProgress: () =>
-      this.state
-        .getTasksFromNewest()
-        .filter(task => task.status === "inprogress"),
-    getTasksDone: () =>
-      this.state.getTasksFromNewest().filter(task => task.status === "done"),
-    addTask: taskName =>
-      this.setState({
-        tasks: this.state.tasks.concat({
-          id: Date.now(),
-          name: taskName,
-          status: "todo",
-          parent: "tasks"
-        })
-      })
+      this.state.tasks.filter(task => task.status === "inprogress"),
+    getTasksDone: () => this.state.tasks.filter(task => task.status === "done")
+
+    // addTask: taskName =>
+    //   this.setState({
+    //     tasks: this.state.tasks.concat({
+    //       id: Date.now(),
+    //       name: taskName,
+    //       status: "todo",
+    //       parent: "tasks"
+    //     })
+    //   })
   };
 
   componentDidMount() {
-    // this.state.getTasksToDo()
-    // getTasksRealtimeByStatus('todo')
+    this.state.getTasksRealtime();
   }
 
   componentWillUnmount() {}
