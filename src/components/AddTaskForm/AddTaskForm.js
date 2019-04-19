@@ -3,19 +3,19 @@ import { withTasks } from "../../contexts/TasksContext";
 
 class AddTaskForm extends Component {
   state = {
-    taskName: ""
+    taskTitle: ""
   };
 
   handleChange = event => {
     this.setState({
-      taskName: event.target.value
+      taskTitle: event.target.value
     });
   };
 
   handleKeyUp = event => {
-    if (event.key === "Enter" && this.state.taskName.length) {
-      this.props.tasksContext.addTask(this.state.taskName);
-      this.setState({ taskName: "" });
+    if (event.key === "Enter" && this.state.taskTitle.length) {
+      this.props.tasksContext.addTask(this.state.taskTitle);
+      this.setState({ taskTitle: "" });
     }
   };
 
@@ -23,7 +23,7 @@ class AddTaskForm extends Component {
     return (
       <>
         <input
-          value={this.state.taskName}
+          value={this.state.taskTitle}
           onChange={this.handleChange}
           onKeyUp={this.handleKeyUp}
           className="addTaskForm__input"

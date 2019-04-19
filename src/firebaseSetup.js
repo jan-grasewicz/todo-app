@@ -11,4 +11,5 @@ firebase.initializeApp({
 });
 
 const firestore = firebase.firestore();
+export const forServerTimestamp=firebase.firestore
 export default firestore;
