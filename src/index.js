@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import ToDoApp from "./ToDoApp";
-import * as serviceWorker from "./serviceWorker";
+
 import TasksContextProvider from "./contexts/TasksContext";
 
-// import "./firebaseSetup";
+import "./index.css";
+import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <TasksContextProvider>
