@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import AddTaskForm from "./components/AddTaskForm";
-import TasksToDo from "./components/TasksToDo";
-import TasksInProgress from "./components/TasksInProgess";
-import TasksDone from "./components/TasksDone";
-import Header from "./components/Header";
-
-import "./ToDoApp.css";
+import AddTaskForm from "../AddTaskForm";
+import TasksToDo from "../TasksToDo";
+import TasksInProgress from "../TasksInProgess";
+import TasksDone from "../TasksDone";
+import Header from "../Header";
 
 class ToDoApp extends Component {
   render() {
