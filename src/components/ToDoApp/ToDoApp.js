@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import AddTaskForm from "../AddTaskForm";
-import TasksToDo from "../TasksToDo";
-import TasksInProgress from "../TasksInProgess";
-import TasksDone from "../TasksDone";
 import Header from "../Header";
+import Tasks from "../Tasks";
 
 class ToDoApp extends Component {
   render() {
@@ -11,9 +9,7 @@ class ToDoApp extends Component {
       <div>
         <Header />
         <AddTaskForm />
-        <TasksToDo />
-        <TasksInProgress />
-        <TasksDone />
+        <Tasks />
       </div>
     );
   }

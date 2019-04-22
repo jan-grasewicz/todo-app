@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import ToDoApp from "./components/ToDoApp";
+import Root from "./components/Root";
 
 import TasksContextProvider from "./contexts/TasksContext";
 
@@ -9,7 +9,7 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <TasksContextProvider>
-    <ToDoApp />
+    <Root />
   </TasksContextProvider>,
   document.getElementById("root")
 );
