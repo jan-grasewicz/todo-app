@@ -13,4 +13,3 @@ firebase.initializeApp({
 export const forServerTimestamp=firebase.firestore
 export const firestore = firebase.firestore();
 export const tasksCollection=firebase.firestore().collection('tasks')
-

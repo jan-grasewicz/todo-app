@@ -6,11 +6,14 @@ import TasksContextProvider from "./contexts/TasksContext";
 
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
+import AuthContextProvider from "./contexts/AuthContext";
 
 ReactDOM.render(
-  <TasksContextProvider>
-    <Root />
-  </TasksContextProvider>,
+  <AuthContextProvider>
+    <TasksContextProvider>
+      <Root />
+    </TasksContextProvider>
+  </AuthContextProvider>,
   document.getElementById("root")
 );
 
