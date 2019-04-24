@@ -8,9 +8,7 @@ class ToDoApp extends Component {
   render() {
     return (
       <div>
-        <Auth
-         cover={() => <p>Sign in</p>}
-        >
+        <Auth cover={() => <p>Sign in</p>}>
           <Header />
           <AddTaskForm />
           <Tasks />
