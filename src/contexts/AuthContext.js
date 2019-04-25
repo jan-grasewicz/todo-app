@@ -12,13 +12,15 @@ export default class AuthContextProvider extends Component {
       firebase.auth().createUserWithEmailAndPassword(email, password),
     signIn: (email, password) =>
       firebase.auth().signInWithEmailAndPassword(email, password),
-    signOut: () => firebase.auth().signOut()
+    signOut: () => firebase.auth().signOut(),
+    fetchSignedUserData: callback =>
+      firebase.auth().onAuthStateChanged(callback)
   };
 
   componentDidMount() {
-    this.unsubscribe = firebase
-      .auth()
-      .onAuthStateChanged(user => this.setState({ user }));
+    this.unsubscribe = this.state.fetchSignedUserData(user =>
+      this.setState({ user })
+    );
   }
 
   componentWillUnmount() {
@@ -26,7 +28,6 @@ export default class AuthContextProvider extends Component {
   }
 
   render() {
-    console.log("authX", this.state.user);
     return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }

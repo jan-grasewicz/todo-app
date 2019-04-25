@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../../contexts/AuthContext";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class SignUp extends Component {
   state = {
@@ -29,16 +29,11 @@ class SignUp extends Component {
           password: ""
         });
       })
-      .then(() => <Redirect to="/" />)
       .catch(error => this.setState({ success: null, error: error }));
   };
 
   render() {
     const { email, password, success, error } = this.state;
-
-    // if (success) {
-    //   return <Redirect to="/" />;
-    // }
     return (
       <>
         {error && <p style={{ color: "red" }}>{error.message}</p>}

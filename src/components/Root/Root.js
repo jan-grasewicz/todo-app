@@ -12,14 +12,17 @@ class Root extends Component {
     isAuthenticated: false
   };
 
-  isUserSigned = () =>
-    this.props.authContext.user === null
-      ? this.setState({ isAuthenticated: false })
-      : this.setState({ isAuthenticated: true });
+  isUserSigned = user =>
+    this.setState({ isAuthenticated: user === null ? false : true });
 
-  componentDidMount(){
-    this.isUserSigned()
+  componentDidMount() {
+    this.unsubscribe = this.props.authContext.fetchSignedUserData(user =>
+      this.isUserSigned(user)
+    );
+  }
 
+  componentWillUnmount() {
+    this.unsubscribe();
   }
 
   render() {
@@ -36,13 +39,13 @@ class Root extends Component {
         <Route
           path="/signin"
           render={() =>
-            isAuthenticated ? <Redirect to="/account" /> : <SignIn />
+            isAuthenticated ? <Redirect to="/" /> : <SignIn />
           }
         />
         <Route
           path="/signup"
           render={() =>
-            isAuthenticated ? <Redirect to="/account" /> : <SignUp />
+            isAuthenticated ? <Redirect to="/" /> : <SignUp />
           }
         />
         <Route

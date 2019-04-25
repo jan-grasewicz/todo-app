@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../../contexts/AuthContext";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
@@ -29,7 +29,6 @@ class SignIn extends Component {
           password: ""
         });
       })
-      .then(() => <Redirect to="/" />)
       .catch(error => this.setState({ success: null, error: error }));
   };
 
