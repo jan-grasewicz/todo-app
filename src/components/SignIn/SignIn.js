@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { withAuth } from "../../contexts/AuthContext";
+import { Link, Redirect } from "react-router-dom";
 
 class SignIn extends Component {
   state = {
@@ -28,34 +29,36 @@ class SignIn extends Component {
           password: ""
         });
       })
+      .then(() => <Redirect to="/" />)
       .catch(error => this.setState({ success: null, error: error }));
   };
 
   render() {
+    const { email, password, success, error } = this.state;
     return (
       <>
-        {this.state.error && (
-          <p style={{ color: "red" }}>{this.state.error.message}</p>
-        )}
-        {this.state.success && (
-          <p style={{ color: "green" }}>{this.state.success}</p>
-        )}
+        {error && <p style={{ color: "red" }}>{error.message}</p>}
+        {success && <p style={{ color: "green" }}>{success}</p>}
         <form>
           <input
             name="email"
-            value={this.state.email}
+            value={email}
             onChange={this.handleChange}
             placeholder="e-mail"
           />
           <input
             name="password"
             type="password"
-            value={this.state.password}
+            value={password}
             onChange={this.handleChange}
             placeholder="password"
           />
           <button onClick={this.handleSubmit}>Sign In</button>
         </form>
+        <p>
+          Don't have an account?
+          <Link to="/signup"> Sign Up.</Link>
+        </p>
       </>
     );
   }
