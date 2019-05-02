@@ -10,6 +10,7 @@ firebase.initializeApp({
   messagingSenderId: "806198109527"
 });
 
-export const forServerTimestamp=firebase.firestore
+export const forServerTimestamp = firebase.firestore;
 export const firestore = firebase.firestore();
-export const tasksCollection=firebase.firestore().collection('tasks')
+export const firestoreCollection = collectionName =>
+  firebase.firestore().collection(collectionName);
