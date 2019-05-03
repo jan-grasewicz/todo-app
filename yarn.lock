@@ -1005,10 +1005,10 @@
   resolved "https://registry.yarnpkg.com/@firebase/performance-types/-/performance-types-0.0.1.tgz#749b6351f5f802ec7a9be5737546eeda18e7ac4a"
   integrity sha512-U45GbVAnPyz7wPLd3FrWdTeaFSvgsnGfGK58VojfEMmFnMAixCM3qBv1XJ0xfhyKbK1xZN4+usWAR8F3CwRAXw==
 
-"@firebase/performance@0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@firebase/performance/-/performance-0.2.0.tgz#cf0898ece0959dd63e8157ed29d3e8cd571d3d09"
-  integrity sha512-XvBphI7THzaw0gdDJSeUEb+EGYGWOrwB78F30DBSP2d+UBtx8+UwJf/+Vlt0AlZFhv4v7ROFgGNYiLlY3z9lnw==
+"@firebase/performance@0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@firebase/performance/-/performance-0.2.1.tgz#14cf8c747672ca529cc6d07234ef5baab227d4c9"
+  integrity sha512-vo/24+W35foc2ShRgeIlx2Ej45+Sn6uYPpnYzTtJb3DwE3sb0BVGocVgINbXyguUq2PHS+6yLsCm88y12DS2EA==
   dependencies:
     "@firebase/installations" "0.1.0"
     "@firebase/logger" "0.1.13"
@@ -1169,9 +1169,9 @@
     loader-utils "^1.1.0"
 
 "@types/node@*":
-  version "11.13.8"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.8.tgz#e5d71173c95533be9842b2c798978f095f912aab"
-  integrity sha512-szA3x/3miL90ZJxUCzx9haNbK5/zmPieGraZEe4WI+3srN0eGLiT22NXeMHmyhNEopn+IrxqMc7wdVwvPl8meg==
+  version "11.13.9"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-11.13.9.tgz#f80697caca7f7fb2526527a5c5a2743487f05ccc"
+  integrity sha512-NJ4yuEVw5podZbINp3tEqUIImMSAEHaCXRiWCf3KC32l6hIKf0iPJEh2uZdT0fELfRYk310yLmMXqy2leZQUbg==
 
 "@types/q@^1.5.1":
   version "1.5.2"
@@ -2364,9 +2364,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000918, caniuse-lite@^1.0.30000929, caniuse-lite@^1.0.30000957, caniuse-lite@^1.0.30000963:
-  version "1.0.30000963"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000963.tgz#5be481d5292f22aff5ee0db4a6c049b65b5798b1"
-  integrity sha512-n4HUiullc7Lw0LyzpeLa2ffP8KxFBGdxqD/8G3bSL6oB758hZ2UE2CVK+tQN958tJIi0/tfpjAc67aAtoHgnrQ==
+  version "1.0.30000966"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000966.tgz#f3c6fefacfbfbfb981df6dfa68f2aae7bff41b64"
+  integrity sha512-qqLQ/uYrpZmFhPY96VuBkMEo8NhVFBZ9y/Bh+KnvGzGJ5I8hvpIaWlF2pw5gqe4PLAL+ZjsPgMOvoXSpX21Keg==
 
 capture-exit@^1.2.0:
   version "1.2.0"
@@ -3472,9 +3472,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.3.103, electron-to-chromium@^1.3.127:
-  version "1.3.129"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.129.tgz#bff32e1840775554aafa301e9dc5002d565aae80"
-  integrity sha512-puirJsgZnedlFEmRa7WEUIaS8ZgHHn7d7inph+RiapCc0x80hdoDyEEpR9z3aRUSZy4fGxOTOFcxnGmySlrmhA==
+  version "1.3.130"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.130.tgz#27f84e823bd80a5090e2baeca4fefbaf476cf7af"
+  integrity sha512-UY2DI+gsnqGtQJqO8wXN0DnpJY+29FwJafACj0h18ZShn5besKnrRq6+lXWUbKzdxw92QQcnTqRLgNByOKXcUg==
 
 elliptic@^6.0.0:
   version "6.4.1"
@@ -4193,9 +4193,9 @@ find-up@^2.0.0, find-up@^2.1.0:
     locate-path "^2.0.0"
 
 firebase@^5.9.4:
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-5.11.0.tgz#d1a37b822e01680a3d8d4b476b48d8c80949d9c1"
-  integrity sha512-9SKdrjwOU9X0n83Qw+RjQ2v3Fsst0O4x1EuhHj4OZLCe8IVI4aTQNEJqAPP/fBwhdQS/nFNQfcWPxbBu6EF4qw==
+  version "5.11.1"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-5.11.1.tgz#e7d376265545d7b0538b4679a96145c26a2b5c39"
+  integrity sha512-cop2UHytKas8WJZTovZqhpZIgwRfsvegijyOjgmMJoaOHCnyH4eymPneglgXsK5ExOdxJSTC4QD5qETrdL3dMw==
   dependencies:
     "@firebase/app" "0.3.17"
     "@firebase/auth" "0.10.2"
@@ -4203,7 +4203,7 @@ firebase@^5.9.4:
     "@firebase/firestore" "1.2.2"
     "@firebase/functions" "0.4.6"
     "@firebase/messaging" "0.3.19"
-    "@firebase/performance" "0.2.0"
+    "@firebase/performance" "0.2.1"
     "@firebase/polyfill" "0.3.13"
     "@firebase/storage" "0.2.15"
 
@@ -10505,9 +10505,9 @@ workbox-webpack-plugin@3.6.3:
     workbox-build "^3.6.3"
 
 worker-farm@^1.5.2:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.6.0.tgz#aecc405976fab5a95526180846f0dba288f3a4a0"
-  integrity sha512-6w+3tHbM87WnSWnENBUvA2pxJPLhQUg5LKwUQHq3r+XPhIM+Gh2R5ycbwPCyuGbNg+lPgdcnQUhuC02kJCvffQ==
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/worker-farm/-/worker-farm-1.7.0.tgz#26a94c5391bbca926152002f69b84a4bf772e5a8"
+  integrity sha512-rvw3QTZc8lAxyVrqcSGVm5yP/IJ2UcB3U0graE3LCFoZ0Yn2x4EoVSqJKdB/T5M+FLcRPjz4TDacRf3OCfNUzw==
   dependencies:
     errno "~0.1.7"
 

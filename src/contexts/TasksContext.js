@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { forServerTimestamp, firestoreCollection } from "../firebaseSetup";
+import { AuthContext } from "./AuthContext";
 
 export const TasksContext = React.createContext();
 const { Provider, Consumer } = TasksContext;
@@ -7,6 +8,7 @@ const { Provider, Consumer } = TasksContext;
 export default class TasksContextProvider extends Component {
   state = {
     tasks: [],
+    userId: null,
     tasksCollection: "tasks",
     getTasksRealtime: () =>
       firestoreCollection(this.state.tasksCollection)
@@ -63,17 +65,21 @@ export default class TasksContextProvider extends Component {
   };
 
   componentDidMount() {
-    this.unsubscribe = this.state.getTasksRealtime();
+    this.unsubscribe = (this.state.getTasksRealtime(),
+    this.context.fetchSignedUserData(user =>
+      this.setState({ userId: user.uid })
+    ));
   }
 
   componentWillUnmount() {
     this.unsubscribe();
   }
-
   render() {
+    // console.log(this.state.userId);
     return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }
+TasksContextProvider.contextType = AuthContext;
 
 export const withTasks = Component => props => (
   <Consumer>{value => <Component {...props} tasksContext={value} />}</Consumer>
