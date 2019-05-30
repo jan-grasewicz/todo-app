@@ -9,9 +9,9 @@ export default class TasksContextProvider extends Component {
   state = {
     tasks: [],
     userId: null,
-    tasksCollection: "tasks",
-    getTasksRealtime: () =>
-      firestoreCollection(this.state.tasksCollection)
+    getTasksCollectionName: () => `tasks-${this.state.userId}`,
+    getTasksRealtime: () =>{
+      firestoreCollection(this.state.getTasksCollectionName())
         .orderBy("timestamp.statusChange", "desc")
         .onSnapshot(
           querySnapshot => {
@@ -22,14 +22,14 @@ export default class TasksContextProvider extends Component {
             this.setState({ tasks });
           },
           error => console.error("Fetch tasks error:", error)
-        ),
+        )},
     getTasksToDo: () => this.state.tasks.filter(task => task.status === "todo"),
     getTasksInProgress: () =>
       this.state.tasks.filter(task => task.status === "inprogress"),
     getTasksDone: () => this.state.tasks.filter(task => task.status === "done"),
 
     addTask: taskTitle =>
-      firestoreCollection(this.state.tasksCollection).add({
+      firestoreCollection(this.state.getTasksCollectionName()).add({
         title: taskTitle,
         status: "todo",
         timestamp: {
@@ -41,7 +41,7 @@ export default class TasksContextProvider extends Component {
     changeTaskStatus: (id, status) => {
       switch (status) {
         case "todo":
-          return firestoreCollection(this.state.tasksCollection)
+          return firestoreCollection(this.state.getTasksCollectionName())
             .doc(id)
             .update({
               status: "inprogress",
@@ -49,12 +49,12 @@ export default class TasksContextProvider extends Component {
             })
             .catch(error => console.error("Status change error: ", error));
         case "inprogress":
-          return firestoreCollection(this.state.tasksCollection)
+          return firestoreCollection(this.state.getTasksCollectionName())
             .doc(id)
             .update({ status: "done", "timestamp.statusChange": new Date() })
             .catch(error => console.error("Status change error: ", error));
         case "done":
-          return firestoreCollection(this.state.tasksCollection)
+          return firestoreCollection(this.state.getTasksCollectionName())
             .doc(id)
             .delete()
             .catch(error => console.error("Delete task error: ", error));
@@ -65,17 +65,17 @@ export default class TasksContextProvider extends Component {
   };
 
   componentDidMount() {
-    this.unsubscribe = (this.state.getTasksRealtime(),
+    this.unsubscribe = 
     this.context.fetchSignedUserData(user =>
-      this.setState({ userId: user.uid })
-    ));
+      this.setState({
+        userId: user.uid
+      },this.state.getTasksRealtime)
+    )
   }
-
   componentWillUnmount() {
     this.unsubscribe();
   }
   render() {
-    // console.log(this.state.userId);
     return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }
