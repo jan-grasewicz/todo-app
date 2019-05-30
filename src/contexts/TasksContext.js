@@ -10,7 +10,7 @@ export default class TasksContextProvider extends Component {
     tasks: [],
     userId: null,
     getTasksCollectionName: () => `tasks-${this.state.userId}`,
-    getTasksRealtime: () =>{
+    getTasksRealtime: () => {
       firestoreCollection(this.state.getTasksCollectionName())
         .orderBy("timestamp.statusChange", "desc")
         .onSnapshot(
@@ -22,7 +22,8 @@ export default class TasksContextProvider extends Component {
             this.setState({ tasks });
           },
           error => console.error("Fetch tasks error:", error)
-        )},
+        );
+    },
     getTasksToDo: () => this.state.tasks.filter(task => task.status === "todo"),
     getTasksInProgress: () =>
       this.state.tasks.filter(task => task.status === "inprogress"),
@@ -65,12 +66,14 @@ export default class TasksContextProvider extends Component {
   };
 
   componentDidMount() {
-    this.unsubscribe = 
-    this.context.fetchSignedUserData(user =>
-      this.setState({
-        userId: user.uid
-      },this.state.getTasksRealtime)
-    )
+    this.unsubscribe = this.context.fetchSignedUserData(user =>
+      this.setState(
+        {
+          userId: user.uid
+        },
+        this.state.getTasksRealtime
+      )
+    );
   }
   componentWillUnmount() {
     this.unsubscribe();
